@@ -83,13 +83,13 @@ function App() {
 					<tbody>
 						{Object.keys(state.data)?.map((key) => {
 							const { symbol, description, assetSymbol } = state.data[key];
-							const price = Number(state.justPrices[key]).toFixed(6) ?? "....";
+							const price = Number(state.justPrices[key]);
 							return (
 								<tr key={key}>
 									<td>{key}</td>
 									<td>{description}</td>
 									<td>{assetSymbol}</td>
-									<td>{price}</td>
+									<td>{isNaN(price) ? "...." : price?.toFixed(6)}</td>
 								</tr>
 							);
 						})}
