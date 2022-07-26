@@ -12,7 +12,13 @@ function App() {
 	let socket = new WebSocket("wss://production-esocket.delta.exchange");
 
 	const apiCall = async () => {
-		const res = await fetch("https://api.delta.exchange/v2/products");
+		const res = await fetch("https://api.delta.exchange/v2/products", {
+			method: "GET",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 		const data = await res.json();
 		const dataOb = {};
 		const allSymbols = [];
